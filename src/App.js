@@ -81,12 +81,12 @@ function App() {
   return (
     <div className='App'>
       <h2>Total Number of Pets Across All Kitties: {totalPetTally}</h2>
+      <NewCatForm onGetAllCats={getAllCats} />
       <CatList
         catData={catData}
         onPetCat={petCat}
         onUnregister={unregisterCat}
       />
-      <NewCatForm onGetAllCats={getAllCats} />
     </div>
   );
 }
