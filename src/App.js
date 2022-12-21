@@ -73,6 +73,11 @@ function App() {
       });
   };
 
+  const addCat = (newCat) => {
+    const catDataCopy = [...catData, newCat];
+    setCatData(catDataCopy);
+  }
+
   useEffect(() => {
     console.log("Doing UseEffect!");
     getAllCats();
@@ -81,7 +86,7 @@ function App() {
   return (
     <div className='App'>
       <h2>Total Number of Pets Across All Kitties: {totalPetTally}</h2>
-      <NewCatForm onGetAllCats={getAllCats} />
+      <NewCatForm onAddCats={addCat} />
       <CatList
         catData={catData}
         onPetCat={petCat}
