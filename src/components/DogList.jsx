@@ -11,6 +11,7 @@ const DogList = ( props ) => {
         id={dog.id}
         age={dog.age}
         breed={dog.breed}
+        gender={dog.gender}
         cuteness={dog.cuteness}
         petCount={dog.petCount}
         onPetDog={props.onPetDog}
@@ -39,6 +40,7 @@ DogList.propTypes = {
     breed: PropTypes.string.isRequired,
     cuteness: PropTypes.number.isRequired,
     petCount: PropTypes.number.isRequired,
+    gender: PropTypes.string.isRequired,
   })),
   onPetDog: PropTypes.func.isRequired,
   onUnregister: PropTypes.func.isRequired

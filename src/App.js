@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import DogList from "./components/DogList";
 // import dogDataJson from "./data/dogData.json";
 import axios from 'axios';
+import DogForm from "./components/DogForm";
 
 const BaseUrl = 'http://localhost:5000';
 
@@ -72,12 +73,38 @@ function App() {
     }, 0);
   };
 
+  const addDogCallback = (newDogData) => {
+    axios
+      .post('http://localhost:5000/dogs', newDogData)
+      .then(response => {
+        // console.log(response.data)
+        const newDogs = [...dogData];
+
+        newDogs.push({
+          id: response.data.id,
+          name: response.data.name,
+          age: response.data.age,
+          breed: response.data.breed,
+          cuteness: response.data.cuteness,
+          petCount: response.data.petCount,
+          gender: response.data.gender,
+          ...dogData
+        });
+
+        setDogData(newDogs);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   const totalPetTally = calcTotalPets(dogData);
 
   return (
     <div className="App">
-      Hello! It's Monday in {name} Roundtable!
+      Hello! It's Wednesday in {name} Roundtable!
       <h2>Total Number of Pets Across all Doggos: {totalPetTally} </h2>
+      <DogForm addDogCallback={addDogCallback} />
       <DogList 
         dogData={dogData}
         onPetDog={petDog}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 // cuteness level
 // name, age
 // breed
@@ -16,6 +17,7 @@ const Dog = ( props ) => {
             <ul>
                 {props.name}
                 <li>age: {props.age}</li>
+                <li>gender: {props.gender}</li>
                 <li>breed: {props.breed}</li>
                 <li>cuteness Level: {props.cuteness}</li>
                 <li>pet count: {props.petCount}</li>
@@ -32,6 +34,7 @@ Dog.propTypes = {
     age: PropTypes.number.isRequired,
     cuteness: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
     petCount: PropTypes.number.isRequired,
     onPetDog: PropTypes.func.isRequired,
     onUnregister: PropTypes.func.isRequired
