@@ -5,33 +5,6 @@ import NewCatForm from './components/NewCatForm';
 
 import './App.css';
 
-const catDataList = [
-  {
-    name: "Ubik",
-    id: 1,
-    caretaker: "Maria",
-    color: "grey",
-    personality: "wild child",
-    petCount: 3,
-  },
-  {
-    name: "Pepper",
-    id: 2,
-    caretaker: "Mark",
-    color: "black",
-    personality: "spicy",
-    petCount: 2,
-  },
-  {
-    name: "Binx",
-    id: 3,
-    caretaker: "Susan",
-    color: "tuxedo",
-    personality: "feral",
-    petCount: 1,
-  },
-];
-
 const kBaseUrl = 'http://localhost:5000';
 
 const convertFromApi = (apiCat) => {
@@ -73,14 +46,10 @@ const unregisterCatApi = (id) => {
   });
 };
 
-const addNewCatApi = (name) => {
-  const currentCatData = {
-    name,
-    personality: "not at all fun",
-    color: "calico",
-    pet_count: 0,
-  };
-  return axios.post(`${kBaseUrl}/cats`, currentCatData)
+const addNewCatApi = (catData) => {
+  const requestBody = {...catData, pet_count: 0,};
+
+  return axios.post(`${kBaseUrl}/cats`, requestBody)
     .then(response => {
       return convertFromApi(response.data);
     })
